@@ -216,6 +216,16 @@ public abstract class HeaderRecyclerViewAdapter<VH extends RecyclerView.ViewHold
     this.items = items;
   }
 
+  public List<T> getItems() {
+    return this.items;
+  }
+
+  public void removeItemAtPosition(int position) {
+    this.items.remove(position);
+    notifyItemRemoved(position);
+    notifyItemRangeChanged(position, this.items.size());
+  }
+
   /**
    * If you need a footer, you should set footer data in the adapter initialization code.
    */
